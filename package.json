@@ -6,7 +6,7 @@
   "bin": {
     "cleaner": "bin/cleaner.js"
   },
-  "type": "module",
+  "type": "commonjs",
   "preferGlobal": true,
   "scripts": {
     "start": "node bin/cleaner.js",
