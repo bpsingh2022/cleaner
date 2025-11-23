@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+    "options": {
+    "disableAutoDetection": "on"
+  },
+  "tasks": [
+    {
+      "label": "Build Cleaner CLI",
+      "type": "shell",
+      "command": "npm run build",
+      "group": "build",
+      "presentation": { "reveal": "always" }
+    },
+    {
+      "label": "Run Cleaner (Dry Run)",
+      "type": "shell",
+      "command": "node dist/index.js --dry-run --verbose",
+      "group": "test",
+      "presentation": { "reveal": "always" }
+    },
+    {
+      "label": "Run Cleaner (Live)",
+      "type": "shell",
+      "command": "node dist/index.js",
+      "group": "test",
+      "presentation": { "reveal": "always" }
+    },
+    {
+      "label": "Install Globally",
+      "type": "shell",
+      "command": "npm install -g .",
+      "group": "build",
+      "presentation": { "reveal": "always" }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "cleaner",
+  "version": "1.0.0",
+  "description": "A smart cleanup CLI that locates backup files and folders using patterns and automatically archives them into dated folders while preserving structure.",
+  "main": "bin/cleaner.js",
+  "bin": {
+    "cleaner": "bin/cleaner.js"
+  },
+  "type": "module",
+  "preferGlobal": true,
+  "scripts": {
+    "start": "node bin/cleaner.js",
+    "build": "tsc",
+    "test": "node test/cli.test.js",
+    "prepare": "npm run build"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "src/",
+    "types/",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "archiver": "5.3.1"
+  },
+  "devDependencies": {
+    "@types/archiver": "7.0.0",
+    "@types/node": "24.10.1",
+    "typescript": "5.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bpsingh2022/cleaner.git"
+  },
+  "keywords": [
+    "cli",
+    "cleanup",
+    "backup",
+    "archive",
+    "file-system",
+    "auto-cleaner",
+    "maintenance",
+    "node-cli",
+    "automation"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "bpsingh2020 <bpsingh01012022@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bpsingh2022/cleaner/issues"
+  },
+  "homepage": "https://github.com/bpsingh2022/cleaner#readme"
+}
