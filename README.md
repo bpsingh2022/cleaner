@@ -18,8 +18,8 @@ It preserves folder structure, supports dry-run mode, verbose logs, and optional
 
 ## 📚 Documentation
 
-* 📘 **User Guide** → `docs/user-guide.md`
-* 🛠 **Developer Guide** → `docs/developer-guide.md`
+* 📘 **User Guide** → [docs/user-guide.md](docs/user-guide.md)
+* 🛠 **Developer Guide** → [docs/developer-guide.md](docs/developer-guide.md)
 
 ---
 
@@ -106,4 +106,4 @@ cleaner . --pattern "backup-*" --pattern "old_*" --verbose
 ## 📄 License
 
 This project is licensed under the **MIT License**.
-See: `LICENSE`
+See: [LICENSE](LICENSE)
