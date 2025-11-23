@@ -1,4 +1,4 @@
-
+# Cleaner CLI tool 
 ...existing code...
 [![npm version](https://img.shields.io/npm/v/cleaner-cli.svg)](https://www.npmjs.com/package/cleaner-cli)
 Cleaner is a CLI tool to move files and folders matching patterns into an archive folder (`bk-archive/YYYY-MM-DD`), preserving structure. It supports dry-run, verbose logging, and optional zipping of the archive. The CLI is robust, safe, and logs all actions.
