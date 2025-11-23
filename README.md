@@ -1,150 +1,109 @@
-# Cleaner CLI tool 
-...existing code...
-[![npm version](https://img.shields.io/npm/v/cleaner-cli.svg)](https://www.npmjs.com/package/cleaner-cli)
-Cleaner is a CLI tool to move files and folders matching patterns into an archive folder (`bk-archive/YYYY-MM-DD`), preserving structure. It supports dry-run, verbose logging, and optional zipping of the archive. The CLI is robust, safe, and logs all actions.
-
-## Documentation
-
-
-## Features
-
-
-## Installation
-
-Clone the repo and install dependencies:
-
-
-Optionally, install globally to use `cleaner` anywhere:
-
-# Now you can run `cleaner` globally for testing
-```
-
-## Usage
-
-```bash
-cleaner [sourceFolder] [--dry-run] [--verbose] [--zip] [--pattern "bk-*"] [--patterns "bk-*,bk_*"]
-```
-
-### Examples
-
-	```bash
-# Cleaner CLI
+# 🧹 Cleaner CLI
 
 [![npm version](https://img.shields.io/npm/v/cleaner-cli.svg)](https://www.npmjs.com/package/cleaner-cli)
-[![Build Status](https://github.com/bpsingh2022/cleaner/actions/workflows/ci.yml/badge.svg)](https://github.com/bpsingh2022/cleaner/actions)
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Cleaner is an enterprise-grade CLI tool for safely archiving files and folders matching user-defined patterns. It is designed for ongoing development and is not a finished product. Use at your own risk; the author is not responsible for any damages or data loss.
-
-## Disclaimer
-
-**This project is under active development. Use this script at your own risk. The author and contributors are not responsible for any damages, data loss, or other issues resulting from its use. Always test in a safe environment before deploying in production.**
-
-## Documentation
-
-
-## Features
-
-
-## Installation
-Clone the repo and install dependencies:
-
-```bash
-```
-
-Optionally, install globally to use `cleaner` anywhere:
-```bash
-npm install -g .
-# Now you can run `cleaner` from any folder
-```
-
-Or use for development:
-## Usage
-
-```bash
-cleaner [sourceFolder] [--dry-run] [--verbose] [--pattern "bk-*"] [--patterns "bk-*,bk_*"] [--archive "customArchive"]
-```
-
-### Examples
-
-  ```bash
-	cleaner --dry-run --verbose
-	```
-	```bash
-	cleaner /projects/myapp --patterns "bk-*,bk_*" --zip
-	```
-	```bash
-	cleaner . --pattern "backups-*" --pattern "old_*" --verbose
-	```
-
-## Notes on design & safety
-
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for release history.
-
-## License
-
-MIT
+Cleaner is a simple yet powerful CLI tool for organizing and archiving files based on patterns.
+It preserves folder structure, supports dry-run mode, verbose logs, and optional ZIP compression — making it useful for cleaning backups, outdated builds, logs, or messy project directories.
 
 ---
-[![npm version](https://img.shields.io/npm/v/cleaner-cli.svg)](https://www.npmjs.com/package/cleaner-cli)
 
+## ⚠️ Disclaimer
 
-# cleaner
+> **This tool is under active development. Use carefully.**
+> Always test in a safe environment before running it on important data.
+> The author assumes **no responsibility for unintended modifications or data loss.**
 
-Cleaner is a CLI tool to move files and folders matching patterns into an archive folder (`bk-archive/YYYY-MM-DD`), preserving structure. It supports dry-run, verbose logging, and optional zipping of the archive. The CLI is robust, safe, and logs all actions.
+---
 
-## Documentation
+## 📚 Documentation
 
-- [User Guide](docs/user-guid.md)
-- [Developer Guide](docs/developer-guid.md)
+* 📘 **User Guide** → `docs/user-guide.md`
+* 🛠 **Developer Guide** → `docs/developer-guide.md`
 
-## Features
+---
 
-- Moves files first, then folders (deepest-first)
-- Safe move: falls back to copy+delete if needed
-- Logs to `bk-backup-log-YYYY-MM-DD.txt` (unless dry-run)
+## ✨ Features
 
-Optionally, install globally to use `cleaner` anywhere:
+* Archive files and folders matching one or multiple patterns
+* Preserves directory structure inside `bk-archive/YYYY-MM-DD/`
+* Supports:
+
+  * `--dry-run` (simulation mode)
+  * `--verbose` (detailed logs)
+  * `--zip` (optional archive compression)
+* Logs all actions to:
+  `bk-backup-log-YYYY-MM-DD.txt`
+* Safe move strategy with fallback copy-delete
+* Automatically ignores its own archive folder
+
+---
+
+## 📦 Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/bpsingh2022/cleaner.git
+cd cleaner
+npm install
+```
+
+### Optional: Install globally
 
 ```bash
 npm install -g .
-# Now you can run `cleaner` from any folder
+cleaner --help
 ```
 
-## Usage
+---
+
+## 🛠 Usage
 
 ```bash
-cleaner [sourceFolder] [--dry-run] [--verbose] [--zip] [--pattern "bk-*"] [--patterns "bk-*,bk_*"]
+cleaner [sourceFolder] 
+        [--dry-run] 
+        [--verbose] 
+        [--zip] 
+        [--pattern "bk-*"] 
+        [--patterns "bk-*,logs*,dist"]
+        [--archive "my-archive"]
 ```
 
-### Examples
+---
 
-- Run in current directory, preview only:
-	```bash
-	cleaner --dry-run --verbose
-	```
-- Run on a specific folder, with zipping and custom patterns:
-	```bash
-	cleaner /projects/myapp --patterns "bk-*,bk_*" --zip
-	```
-	```bash
-	cleaner . --pattern "backups-*" --pattern "old_*" --verbose
-	```
-## Notes on design & safety
+### 💡 Examples
 
-- Never descends into `bk-archive` (skips it entirely)
-- All file operations are wrapped in try/catch; falls back to copy+delete if needed
-- Logging goes to a file `bk-backup-log-YYYY-MM-DD.txt` (unless dry-run)
-- The zip feature uses `archiver` and is only invoked when `--zip` is provided
-- Pattern matcher supports `prefix*`, `*suffix`, exact names, and simple contains patterns
+Preview actions without making changes:
 
-## License
+```bash
+cleaner --dry-run --verbose
+```
 
-Optionally, install globally to use `cleaner` anywhere:
+Archive multiple pattern groups with zipping:
+
+```bash
+cleaner /projects/myapp --patterns "bk-*,logs*,dist" --zip
+```
+
+Use repeated `--pattern` flags:
+
+```bash
+cleaner . --pattern "backup-*" --pattern "old_*" --verbose
+```
+
+---
+
+## 🧠 Design Notes
+
+* **Never enters:** `bk-archive`
+* **Error-safe:** all operations wrapped in try/catch
+* **ZIP mode:** enabled only when `--zip` is supplied
+* **Pattern support:** prefix, suffix, contains, exact names
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+See: `LICENSE`
